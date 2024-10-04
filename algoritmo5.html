@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo 5</title>
+    <script>
+        function calcularPi() {
+            const iteraciones = parseInt(document.getElementById('iteraciones').value);
+            let pi = 0;
+            let serie = '';
+            
+            for (let i = 0; i < iteraciones; i++) {
+                const term = 1 / (2 * i + 1);
+                if (i % 2 === 0) {
+                    pi += term;
+                    serie += (i === 0 ? '' : ' + ') + `1/${2 * i + 1}`;
+                } else {
+                    pi -= term;
+                    serie += ' - ' + `1/${2 * i + 1}`;
+                }
+            }
+            
+            pi *= 4;
+            serie = `π = 4 (${serie})`;
+            
+            document.getElementById('resultado').textContent = `π ≈ ${pi.toFixed(6)}`;
+            document.getElementById('serie').textContent = serie;
+        }
+    </script>
+</head>
+
+<body>
+    ñ
+    <p>Calcule el valor de π a partir de la siguiente serie infinita (Método de Gottfried Leibniz)</p>
+
+    Sucesión: <input type="text" id="iteraciones" value="20"><br>
+    <input type="button" value="Calcular π" onclick="calcularPi()"><br>
+    <p id="serie">Serie:</p>
+    <p id="resultado">Resultado:</p>
+</body>
+
+</html>

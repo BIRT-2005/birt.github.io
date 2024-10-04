@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html Lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo 7: arreglos</title>
+    <script>
+        var cantidad = 0;
+
+        function aleatorio() {
+            var renglon = document.getElementById("Renglones");
+            var nElementos = parseInt(document.getElementById("Elementos").value);
+            var dimension = parseInt(document.getElementById("DimensionesX").value);
+            var elementos = [];
+
+            // Carga elementos en el arreglo
+            for (var i = 0; i < nElementos; i++) {
+                var elemento = {
+                    numero: i + 1,
+                    valor: Math.floor(Math.random() * dimension) + 1,
+                };
+                elementos.push(elemento);
+            }
+
+            // Muestra elementos
+            var salida = document.getElementById("Salida");
+            var listaOrden = "<ul>";
+            for (var i = 0; i < elementos.length; i++) {
+                listaOrden += "<li>" + elementos[i].numero + ": " + elementos[i].valor + "</li>";
+            }
+            listaOrden += "</ul>";
+            salida.innerHTML = listaOrden;
+        }
+
+        function insertar() {
+            document.getElementById("ElementoNuevo").value = Math.floor(Math.random() * 2000);
+        }
+
+        function reinsertar() {
+            document.getElementById("capturaSalida").disabled = false;
+            document.getElementById("aleatorio").disabled = true;
+            document.getElementById("capturaSalida").disabled = true;
+            document.getElementById("Insertar").disabled = true;
+            document.getElementById("Reinsertar").disabled = true;
+            document.getElementById("ElementoNuevo").value = "";
+            aleatorio();
+        }
+
+        function Calcular() {
+            var Renglones = document.getElementById("Renglones").value;
+            var Elementos = [];
+            var pares = [];
+
+            for (var i = 0; i < Renglones; i++) {
+                Elementos.push([]);
+            }
+
+            for (var i = 0; i < Elementos.length; i++) {
+                for (var j = 0; j < Elementos[i].length; j++) {
+                    if (Elementos[i][j] % 2 == 0) {
+                        pares.push(Elementos[i][j]);
+                    }
+                }
+            }
+
+            // Renglones horizontales
+            var TablaHorizontal = document.getElementById("TablaHorizontal").insertRow(-1);
+            document.getElementById("TablaHorizontal").insertRow(-1).insertCell(0).innerHTML = "<b>Elemento</b>";
+            document.getElementById("TablaHorizontal").insertRow(-1).insertCell(1).innerHTML = "<b>Número Pares</b>";
+            for (var i = 0; i < pares.length; i++) {
+                var fila = TablaHorizontal.insertRow(-1);
+                fila.insertCell(0).innerHTML = pares[i];
+                fila.insertCell(1).innerHTML = Elementos[pares[i]];
+            }
+
+            // Vertical
+            document.getElementById("TablaVertical").insertRow(-1).insertCell(0).innerHTML = "<b>Número</b>";
+            var q = pares.length;
+            for (var j = 0; j < Elementos.length; j++) {
+                if (pares[j] % 2 == 0) { q++; }
+                else { q = pares[j]; }
+                var fila2 = TablaHorizontal.insertRow(-1);
+                fila2.insertCell(0).innerHTML = pares[j];
+                fila2.insertCell(1).innerHTML = q;
+            }
+        }
+
+        function aleatorios() {
+            // Genera números aleatorios y los muestra en la tabla
+            var rango = document.getElementById("Rango").value;
+            var arreglo = [];
+            for (var i = 0; i < rango; i++) {
+                var numero = Math.floor(Math.random() * 100) + 1;
+                arreglo.push(numero);
+            }
+
+            var tabla = document.getElementById("TablaArreglos");
+            for (var j = 0; j < arreglo.length; j++) {
+                var fila = tabla.insertRow(-1);
+                var celda = fila.insertCell(0);
+                celda.innerHTML = arreglo[j];
+            }
+        }
+    </script>
+</head>
+<body onload="aleatorios()">
+    <p><a href="index.html">Regresar</a></p>
+    <h1>Arreglos 2: </h1>
+    <p>Capture un arreglo de 10 elementos de tipo entero, imprima el arreglo de forma vertical y horizontal, imprima el arreglo de forma ascendente y
+       descendente, encuentre el elemento menor, el mayor, la suma, el promedio o media, la mediana y la moda.
+    </p>
+    <p>Nota: el input donde se capturan los números y el botón capturar se deben deshabilitar al capturar el último elemento del arreglo,
+       el botón generar empieza o inicia deshabilitado, valide que el elemento del arreglo sea entero
+    </p>
+    <p style="display: inline;" id="contador">Elemento [0]:</p>
+    <input type="number" id="elementoInput">
+    <input type="button" value="Capturar" id="capturarBoton" onclick="Capturar();">
+    <input type="button" value="Reiniciar" onclick="reiniciar()">
+    <input type="button" value="Generar resultados" id="generarBoton" onclick="Calcular()" disabled>
+    <br><br>
+    <p id="resultados"></p>
+
+    <table id="TablaHorizontal1" border="2" style="border-collapse:collapse;">
+        <tr id="RenglónIndice1"></tr>
+        <tr id="RenglónDato1"></tr>
+    </table>
+
+    <table id="TablaHorizontal2" border="2" style="border-collapse:collapse;">
+        <tr id="RenglónIndice2"></tr>
+        <tr id="RenglónDato2"></tr>
+    </table>
+
+    <table id="TablaHorizontal3" border="2" style="border-collapse:collapse;">
+        <tr id="RenglónIndice3"></tr>
+        <tr id="RenglónDato3"></tr>
+    </table>
+
+    <br>
+
+    <table id="TablaVertical" border="2" style="border-collapse:collapse;"></table>
+    <table id="TablaVertical2" border="2" style="border-collapse:collapse;"></table>
+    <table id="TablaVertical3" border="2" style="border-collapse:collapse;"></table>
+</body>
+</html>

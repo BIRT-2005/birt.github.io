@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo 4</title>
+    <script>
+        function Fibonacci() {
+            let num = parseInt(document.getElementById("num").value);
+
+            if (!isNaN(num) && num > 1) {
+                let a = 0, b = 1, resultado = "Sucesión:<br>";
+
+                resultado += a + "<br>" + b + "<br>";
+
+                for (let i = 2; i < num; i++) {
+                    let c = a + b;
+                    resultado += c + "<br>";
+                    a = b;
+                    b = c;
+                }
+
+                document.getElementById("out").innerHTML = resultado;
+            } else {
+                document.getElementById("out").innerHTML = "Error: Introduzca un número válido mayor que 1";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p><a href="index.html">Regresar</a></p>
+    <p>Escribir un programa que muestre la sucesión Fibonacci hasta el número solicitado</p>
+
+    Sucesión: <input type="text" id="num" value="20"><br>
+    <input type="button" value="Escribir sucesión" onclick="Fibonacci()"><br>
+    <p id="out">Resultado:</p>
+</body>
+
+</html>

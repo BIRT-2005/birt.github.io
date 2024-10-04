@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorama</title>
+    <link rel="stylesheet" href="./CSS/EstilosMemorama.css">
+    <script src="./js/FuncionMemorama.js"></script>
+</head>
+
+<body onload="Revolver(); Fondo();">
+    <table id="tabla">
+        <tr>
+            <td><img src="./img/0.png" id="0" id="" alt="" class="imagen" onclick="voltearimg(this,0)"></td>
+            <td><img src="./img/0.png" id="1" alt="" class="imagen" onclick="voltearimg(this,1)"></td>
+            <td><img src="./img/0.png" id="2" alt="" class="imagen" onclick="voltearimg(this,2)"></td>
+            <td><img src="./img/0.png" id="3" alt="" class="imagen" onclick="voltearimg(this,3)"></td>
+        </tr>
+        <tr>
+            <td><img src="./img/0.png" id="4" alt="" class="imagen" onclick="voltearimg(this,4)"></td>
+            <td><img src="./img/0.png" id="5" alt="" class="imagen" onclick="voltearimg(this,5)"></td>
+            <td><img src="./img/0.png" id="6" alt="" class="imagen" onclick="voltearimg(this,6)"></td>
+            <td><img src="./img/0.png" id="7" alt="" class="imagen" onclick="voltearimg(this,7)"></td>
+        </tr>
+        <tr>
+            <td><img src="./img/0.png" id="8" alt="" class="imagen" onclick="voltearimg(this,8)"></td>
+            <td><img src="./img/0.png" id="9" alt="" class="imagen" onclick="voltearimg(this,9)"></td>
+            <td><img src="./img/0.png" id="10" alt="" class="imagen" onclick="voltearimg(this,10)"></td>
+            <td><img src="./img/0.png" id="11" alt="" class="imagen" onclick="voltearimg(this,11)"></td>
+        </tr>
+        <tr>
+            <td><img src="./img/0.png" id="12" alt="" class="imagen" onclick="voltearimg(this,12)"></td>
+            <td><img src="./img/0.png" id="13" alt="" class="imagen" onclick="voltearimg(this,13)"></td>
+            <td><img src="./img/0.png" id="14" alt="" class="imagen" onclick="voltearimg(this,14)"></td>
+            <td><img src="./img/0.png" id="15" alt="" class="imagen" onclick="voltearimg(this,15)"></td>
+        </tr>
+    </table>
+    <h1 id="contador">Pares encontrados: 0</h1>
+    <input type="button" value="Reiniciar" onclick="reiniciar()">
+    <p id="Salida"></p>
+</body>
+
+</html>

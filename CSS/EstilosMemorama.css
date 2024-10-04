@@ -1,0 +1,17 @@
+.imagen {
+    width: 124px;
+    height: 160px;
+}
+
+table {
+    background-image: url("../img/fondo1.png");
+    display: inline-table;
+}
+h1{
+    display: inline;
+}
+
+input[type=button]{
+    font-size: large;
+    background-color: blue;
+}
