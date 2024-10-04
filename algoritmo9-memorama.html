@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorama</title>
     <link rel="stylesheet" href="./CSS/EstilosMemorama.css">
-    <script src="./js/FuncionMemorama.js"></script>
+    <script src="./js/FuncionofMemorama.js"></script>
 </head>
 
 <body onload="Revolver(); Fondo();">
+    
     <table id="tabla">
         <tr>
             <td><img src="./img/0.png" id="0" id="" alt="" class="imagen" onclick="voltearimg(this,0)"></td>
@@ -38,7 +39,7 @@
     </table>
     <h1 id="contador">Pares encontrados: 0</h1>
     <input type="button" value="Reiniciar" onclick="reiniciar()">
+    <input type="button" value="Regresar al index" onclick="location.href='index.html';">
     <p id="Salida"></p>
 </body>
-
 </html>

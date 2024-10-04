@@ -4,33 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmo 2</title>
+    <script src="js/Funcion2.js"></script>
 </head>
-<script>
-    function enteros() {
-        if (!isNaN(document.getElementById("num1").value) && !isNaN(document.getElementById("num2").value)) {
-            var a = parseInt(document.getElementById("num1").value);
-            var b = parseInt(document.getElementById("num2").value);
-            var multiplos = "";
-            var count = 0;
-            for (let i = a; i <= b; i++) {
-                if (i % 3 == 0) {
-                    multiplos += `${i} <br>`;
-                    count++;
-                }
-            }
-            if (a != b)
-            for (let i = a; i >= b; i--) {
-                if (i % 3 == 0) {
-                    multiplos += `${i} <br>`;
-                    count++;
-                }
-            }
-            document.getElementById("out").innerHTML = `Resultado:<br> Entre ${a} y ${b} hay ${count} múltiplos de 3`;
-        } else {
-            document.getElementById("out").innerHTML = `Existe un error en el tipo de datos ingresados`;
-        }
-    }
-</script>
 <body bgcolor="#e6f7ff">
     <a href="index.html">Regresar al menú</a> <br>
     Encontrar e imprimir la cantidad de números comprendidos entre dos enteros que son múltiplos de 3<br>

@@ -4,25 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmo3</title>
-    <script>
-        function cubo(){
-            if(!isNaN(document.getElementById("num").value) && 1<(document.getElementById("num").value)){
+    <script src="js/Funcion3.js"></script>
 
-            var naturales=parseInt(document.getElementById("num").value);
-            var Resultado="Resultado:<br>";
-
-            for (let i = 2; i <= naturales; i++) {
-                if(i%2==0){
-                    Resultado += `${i} al cubo es ${i*i*i}<br>`;
-                }
-            }
-            document.getElementById("out").innerHTML=Resultado;
-        } else{
-            document.getElementById("out").innerHTML=
-            `error`;
-        }
-    }
-    </script>
 </head>
 <body bgcolor="#e6f7ff">
     <p><a href="index.html">regresar</a></p>

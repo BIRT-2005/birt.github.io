@@ -4,30 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmo 1</title>
-    <script>
-        function multiplos3() {
-            if(!isNaN(document.getElementById("num1").value) && !isNaN(document.getElementById("num2").value)) {
-                var a = parseInt(document.getElementById("num1").value);
-                var b = parseInt(document.getElementById("num2").value);
-                var multiplos = "";
-                for (let i = a; i <= b; i++) {
-                    if (i % 3 === 0) {
-                        multiplos += `${i} <br>`;
-                    }
-                }
-                if(a != b)
-                for (let i = b; i >= a; i--) {
-                    if (i % 3 === 0) {
-                        multiplos += `${i} <br>`;
-                    }
-                }
-            document.getElementById("out").innerHTML = `Resultado:<br> Los múltiplos de 3 entre ${a} y de ${b} son:<br> ${multiplos}`;
-            } else {
-                document.getElementById("out").innerHTML = `error`;
-            }
-            
-        }
-    </script>
+    <script src="js/Funcion1.js"></script>
 </head>
 <p><a href="index.html">regresar</a></p>
 <body bgcolor="#e6f7ff">

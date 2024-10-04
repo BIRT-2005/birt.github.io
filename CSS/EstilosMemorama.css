@@ -6,6 +6,9 @@
 table {
     background-image: url("../img/fondo1.png");
     display: inline-table;
+    background-size: 600px 900px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 h1{
     display: inline;

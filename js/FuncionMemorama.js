@@ -52,7 +52,7 @@ function Revolver() {
         [tarjetas[i], tarjetas[j]] = [tarjetas[j], tarjetas[i]];
     }
     //alert(tarjetas.join(" - "));
-    document.getElementById("Salida").innerHTML = tarjetas.join(" - ");
+    //document.getElementById("Salida").innerHTML = tarjetas.join(" - ");
 }
 
 function Regresar(imagen1, imagen2){
