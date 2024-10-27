@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #paso{
+            position: fixed;
+            top: 62%;
+            left: 75%;x
+        }
+    </style>
+    <script>
+        var i = 0;
+        function pasoAPaso(){
+            var expresion = document.getElementById("exp").value.split(" ");
+            if(Number.isInteger(Number(expresion[i]))){
+                document.getElementById("paso").innerHTML = `Paso ${expresion[i]} es un numero, va al tope de la pila`;
+            } else if(expresion[i] == "*"){
+                document.getElementById("paso").innerHTML = `Paso ${expresion[i]} es una multiplicacion, saco dos de la pila y el resultado va al tope`;
+            } else if(expresion[i] == "+"){
+                document.getElementById("paso").innerHTML = `Paso ${expresion[i]} es una suma, saco dos de la pila y el resultado va al tope`;
+            } else if(expresion[i] == "-"){
+                document.getElementById("paso").innerHTML = `Paso ${expresion[i]} es una resta, saco dos de la pila y el resultado va al tope`;
+            } else if(expresion[i] == "/"){
+                document.getElementById("paso").innerHTML = `Paso ${expresion[i]} es una division, saco dos de la pila y el resultado va al tope`;
+            } else {
+                document.getElementById("paso").innerHTML = `Paso ${expresion[i]} no es un elemento valida en una expresion postfija`;
+                document.getElementById("Evaluar").disabled = true; 
+                document.getElementById("Paso").disabled = true;
+                document.getElementById("exp").disabled = true; 
+            }
+            i++;
+        }
+
+        function Reiniciar(){
+            document.getElementById("Evaluar").disabled = false; 
+                document.getElementById("Paso").disabled = false;
+                document.getElementById("exp").disabled = false;
+                document.getElementById("exp").value = "3 4 * 2 5 + - 4 * 2 /";
+
+        }
+    </script>
+</head>
+<body>
+    <h1>Evaluacion de expresion postfija</h1>
+    Expresion: <input type="text" name="" id="exp" style="width: 750px;" value="3 4 * 2 5 + - 4 * 2 /">
+    <input type="button" value="Evaluar" id="Evaluar">
+    <input type="button" value="Paso a paso" onclick="pasoAPaso()">
+    <input type="button" value="Reiniciar" id="BReiniciar">
+    <p>Resultado</p>
+    <p id="paso">Paso</p>
+</body>
+</html>

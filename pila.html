@@ -4,79 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        table,tr,td{
-            border-collapse: collapse;
-        }
-    </style>
-    <script>
-        const palabrasAleatorias = [
-            "brillo",
-            "sol",
-            "elefante",
-            "cielo",
-            "bosque",
-            "montaña",
-            "río",
-            "ave",
-            "luz",
-            "mariposa",
-            "nieve",
-            "nube",
-            "estrella",
-            "flor",
-            "tierra"
-        ];
-
-        function aleatorias() {
-            var indice = Math.random() * palabrasAleatorias.length;
-            document.getElementById("Elemento").value = palabrasAleatorias[indice];
-            document.getElementById("iPush").value = `Push()`
-        }
-        function CambioTexto() {
-            var texto = document.getElementById("Elemento").value;
-            document.getElementById("iPush").value = `Push(${texto})`;
-        }
-
-        function Push() {
-            //La linea 15 crea un nuevo renglon que se agrega a la tabla
-            var renglon = document.createElement("tr");
-            var celda1 = document.createElement("td");
-            var celda2 = document.createElement("td");
-            celda2.style.border = "1px solid black";
-            celda1.textContent = "tope->";
-            celda2.textContent = document.getElementById("Elemento").value;
-            renglon.appendChild(celda1);
-            renglon.appendChild(celda2);
-            var rt = document.getElementById("tabla");
-            if (rt.hasChildNodes()) {
-                document.getElementById("tabla").firstChild.firstChild.textContent = "";
-            }
-            rt.insertBefore(renglon, rt.children[0]);
-        }
-
-        function Pop(){
-            if(rt.hasChildNodes()){
-
-            } else{
-                document.getElementById("mensaje").innerHTML = "error;"
-            }
-        }
-    </script>
-
+    <title>Pila Genérica</title>
+    <link rel="stylesheet" href="./CSS/pila.css">
+    <script src="./js/pilaOf.js"></script>
 </head>
 
-<body onload="aleatorias()">
-    <h1>Pila generica</h1>
-    Desarrolle una aplicacion que muestre un objeto tipo pila, e implemente los metodos Push, Pop, Peek, Clear, Finf,
-    isEmpty<br>
-    Elemento: <input type="text" id="Elemento" onkeyup="CambioTexto()">
-    <input type="button" value="Push()" id="iPush" onclick="Push(); aleatorias()" >
-    <table style="display: inline-table;">
+<body onload="Aleatorias()">
+    <h1>Pila Genérica</h1>
+    Desarrolle una aplicación que muestre un objeto tipo pila, e implemente los métodos Push(), Pop(), Peek(), Clear(), Find(), isEmpty()
+    <br>Elemento: <input type="text" id="Elemento" onkeyup="CambioTexto()">
+    <input type="button" value="Push()" onclick="Push(); Aleatorias();">
+    <input type="button" value="Pop()" onclick="Pop()">
+    <input type="button" value="Peek()" onclick="Peek()">
+    <input type="button" value="Clear()" onclick="Clear()">
+    <input type="button" value="Find()" onclick="Find();">
+    <input type="button" value="isEmpty()" onclick="isEmpty();">
+    <table>
         <tbody id="tabla"></tbody>
     </table>
-    <img src="./img/pilas.png" style="display: inline-table;">
+    <img src="./img/pilas.png" alt="Imagen de pila">
+    <h3 id="mensaje"></h3>
 </body>
-
 </html>
