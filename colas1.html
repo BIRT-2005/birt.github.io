@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       const palabrasAleatorias = [
+    "sol", "libro", "café", "nube", "guitarra",
+    "ventana", "camino", "sombra", "fuego", "montaña",
+    "rio", "luz", "jardín", "arena", "puente"
+];
+
+function Aleatorias() {
+    var indice = Math.floor(Math.random() * palabrasAleatorias.length);
+    document.getElementById("Elemento").value = palabrasAleatorias[indice];
+    document.getElementById("iEnqueue").value = `Enqueue(${palabrasAleatorias[indice]})`;
+}
+
+function CambioTexto() {
+    document.getElementById("Enqueue").value = `Enqueue(${document.getElementById("Elemento").value})`;
+    document.getElementById("iFind").value = `Find(${document.getElementById("Elemento").value})`;
+}
+
+function Enqueue() {
+    var queue = document.getElementById("tabla");
+    var renglon = "";
+    if (queue.hasChildNodes()) {
+        renglon = queue.firstChild;
+    } else {
+        renglon = document.createElement("tr");
+        queue.appendChild(renglon);
+    }
+
+    // Creamos la celda
+    var celda = document.createElement("td");
+    celda.style.border = "1px solid black";
+    // Le asignamos el valor a la celda
+    celda.textContent = document.getElementById("Elemento").value;
+    renglon.appendChild(celda);
+
+    // Ponemos un renglon abajo que diga inicio en la primera celda
+    // para que se vea mas pro
+    var inicio = Array.from(queue.rows).find(r => r.cells[0].textContent === "Inicio");
+    if (!inicio) {
+        var renglon2 = document.createElement("tr");
+        var celda2 = document.createElement("td");
+        celda2.textContent = "Inicio";
+        renglon2.appendChild(celda2);
+        queue.appendChild(renglon2);
+    }
+
+    document.getElementById("Elemento").focus();
+    Aleatorias();
+    document.getElementById("iFront").value = `Front(${queue.firstChild.firstChild.textContent})`;
+}
+
+function Dequeue() {
+    var queue = document.getElementById("tabla");
+    if (queue.rows.length > 0) {
+        var renglon = queue.rows[0];
+        if (renglon.cells.length > 0) {
+            renglon.deleteCell(0);
+            if (renglon.cells.length === 0) {
+                // Verificamos si no hay mas celdas en la primera fila
+                if (queue.rows.length > 1) {
+                    queue.deleteRow(1);
+                }
+                document.getElementById("iFront").value = `Front()`;
+            }
+            document.getElementById("iFront").value = `Front(${queue.firstChild.firstChild.textContent})`;
+        }
+    }
+
+    if (queue.rows.length > 1) {
+        var segundoRenglon = queue.rows[1];
+        if (segundoRenglon.cells.length > 0) {
+            segundoRenglon.cells[0].textContent = "Inicio";
+        }
+    }
+}
+
+function Clear() {
+    document.getElementById("tabla").textContent = "";
+    document.getElementById("mensaje").innerHTML = "Se han eliminado todos los elementos de la pila";
+    document.getElementById("iFront").value = "Front()";
+}
+
+function Find() {
+    var rt = document.getElementById("tabla");
+    var control = false;
+    if (rt.hasChildNodes()) {
+        for (let i = 0; i < rt.rows[0].childNodes.length; i++) {
+            let nodo = rt.rows[0].childNodes[i].textContent;
+            if (nodo === document.getElementById("Elemento").value) {
+                document.getElementById("mensaje").innerHTML = `Si se encuentra el elemento ${nodo}`;
+                control = true;
+                break;
+            }
+        }
+    } else if (!control) {
+        document.getElementById("mensaje").innerHTML = "No se encuentra el elemento";
+    } else {
+        document.getElementById("mensaje").innerHTML = "No hay elementos en la pila";
+    }
+}
+
+function isEmpty() {
+    var rt = document.getElementById("tabla");
+    if (rt.hasChildNodes()) {
+        document.getElementById("mensaje").innerHTML = "False";
+    } else {
+        document.getElementById("mensaje").innerHTML = "True";
+    }
+}
+
+    </script>
+</head>
+<body onLoad="Aleatorias()">
+    <h1>♻️ Cola Genérica ♻️</h1>
+    Desarrolle una aplicación que muestre un objeto tipo cola(queue), <br>
+    que implemente los métodos <b>Enqueue</b>, <b>Dequeue</b>, <br>
+    <b>Front</b>, <b>Clear</b>, <b>Find</b>, <b>isEmpty</b>
+    <br><br>
+
+    Elemento: <input type="text" id="Elemento" onkeyup="CambioTexto()">
+    <br><br>
+
+    <input type="button" class="retro-button" value="Enqueue()" id="iEnqueue" onclick="Enqueue(); Aleatorias();">
+    <input type="button" class="retro-button" value="Dequeue()" id="iDequeue" onclick="Dequeue()">
+    <input type="button" class="retro-button" value="Front()" id="iFront" onclick="Front()" disabled>
+    <input type="button" class="retro-button" value="Clear()" id="iClear" onclick="Clear()">
+    <input type="button" class="retro-button" value="Find()" id="iFind" onclick="Find()">
+    <input type="button" class="retro-button" value="isEmpty()" id="iIsEmpty" onclick="isEmpty()">
+    
+    <div id="contenedortabla">
+        <table>
+            <tbody id="tabla"></tbody>
+        </table>
+    </div>
+
+    <img src="img/cola.png" alt="">
+    <p id="mensaje"></p>
+</body>
+
+</html>
