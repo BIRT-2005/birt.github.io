@@ -3,44 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-        function optionKey(){
-            var selects = document.getElementsByTagName("select");
-            for(let i=0; i<selects.length; i++){
-                for (let j=1; j < 26; j++) {
-                    var option = document.createElement("option");
-                    option.value = j;
-                    option.textContent = j;
-                    selects[i].appendChild(option);
-                }
-            }
-        }
-
-        function example1(){
-            document.getElementById("om").innerHTML = "ejemplo";
-        }
-    </script>
+    <title>julio cesar</title>
+    <link rel="stylesheet" href="./CSS/juliocesar.css">
+    <script src="./js/juliocesarOf.js"></script>
 </head>
+<input type="button" value="Regresar al index" onclick="location.href='index.html';"><br>
 <body onload="optionKey()">
     <h1>Algoritmo de cifrado de Cesar</h1>
-    <p style="display: inline; vertical-align: top; font-size: medium; font-weight: bolder;">Mensaje: </p>
-    <textarea name="" id="om" rows="20" style="width: 85%; resize: none;"></textarea>
+    <p style="display: inline; vertical-align: top; font-size: medium; font-weight: bolder;">Mensaje: </p><br>
+    <textarea name="" id="om" rows="20" 
+    onkeydown="allows(event)"
+    onkeyup="capital(this)"></textarea>
     <br>
-    <p style="display: inline; font-size: medium; font-weight: bolder;">Clave/ Llave/ Key</p>
-    <select name="" id=""></select>
-    <select name="" id=""></select>
-    <select name="" id=""></select>
-    <select name="" id=""></select>
-    <select name="" id=""></select>
-    <select name="" id=""></select>
+    <p>Clave/ Llave/ Key</p>
+    <select name="" id="key1"></select>
+    <select name="" id="key2"></select>
+    <select name="" id="key3"></select>
+    <select name="" id="key4"></select>
+    <select name="" id="key5"></select>
+    <select name="" id="key6"></select>
     <input type="button" value="Example 1" onclick="example1()">
-    <input type="button" value="Example 2">
-    <input type="button" value="clear">
-    <input type="button" value="encript">
-    <input type="button" value="Save Key">
-    <input type="button" value="Save Encript Message">
-    <p style="font-size: medium; font-weight: bolder;">Encripted Message:</p>
-    <textarea name="" id="me" rows="20" style="width: 85%; resize: none;" readonly></textarea>
+    <input type="button" value="Example 2" onclick="example2()">
+    <input type="button" value="clear" onclick="Clear()">
+    <input type="button" value="encript" onclick="encrip()">
+    <input type="button" value="Save Key" onclick="saveKey()">
+    <input type="button" value="Save Encript Message" onclick="saveMessage()">
+    <br>
+    <p>Mensaje encriptado:</p><br>
+    <textarea name="" id="me" rows="20"></textarea>
 </body>
 </html>
